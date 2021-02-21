@@ -14,6 +14,7 @@ fibAlgo = algos()
 expAlgo = algos()
 gcdAlgo = algos()
 selectionSortAlgo = algos()
+insertionSortAlgo = algos()
 
 basicOperations = []
 decByOneOperations = []
@@ -21,6 +22,7 @@ decByConst = []
 devAndConquer = []
 sequence = []
 numOfModulos = []
+
 
 x = []
 
@@ -184,18 +186,21 @@ def selectionSortAnalysis_random():
 
 
 
+def main():
 
-basicOperationExponent(400)
-showExp1()
-showExp2()
-showExp3()
+    basicOperationExponent(400)
+    showExp1()
+    showExp2()
+    showExp3()
 
-selectionSortAnalysis_r()
-selectionSortAnalysis_random()
-selectionSortAnalysis_sorted()
-kforTaskOne = displayKfor_GCD_FIB(12)
-displayK_for_fib(12)
-print(math.floor(kforTaskOne[0]), kforTaskOne[1])
+    selectionSortAnalysis_r()
+    selectionSortAnalysis_random()
+    selectionSortAnalysis_sorted()
+    kforTaskOne = displayKfor_GCD_FIB(12)
+    displayK_for_fib(12)
+    print(math.floor(kforTaskOne[0]), kforTaskOne[1])
+
+main()
 
 
 

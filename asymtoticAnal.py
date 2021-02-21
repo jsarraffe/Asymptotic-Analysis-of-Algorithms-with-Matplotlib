@@ -78,9 +78,13 @@ class algos:
 
                     biggerIndex = j
             array[biggerIndex], array[j] = array[len(array)-i-1], array[biggerIndex]
-
-
         return self.basicOperation
+
+    def insertionSort(self, array):
+        for i in range(1, len(array)-1):
+            for j in range(i, array-1, -1):
+                if j > 0 and (array[j]>array[j-1]):
+                    array[j], array[j-1] = array[j-1], array[j]
 
 
 
