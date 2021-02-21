@@ -25,7 +25,9 @@ numOfModulos = []
 x = []
 
 def basicOpOfRecursiveAlgo(kforFib):
+    x.clear()
     for i in range(1, kforFib):
+        x.append(i)
         fibAlgo.fibonacci(i)
         basicOperations.append(fibAlgo.getBasicOp())
         fibAlgo.reset()
@@ -74,11 +76,17 @@ def displayKfor_GCD_FIB(k):
     gcd = gcdAlgo.gcd(k+1, k)
     fig0 = plt.figure()
     plt.plot(x, numOfModulos, "bo")
-    fig0.suptitle('Fibancci', fontsize=20)
+    fig0.suptitle('GCD with worse case input', fontsize=20)
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
     plt.show()
     plt.show()
+
+    # basicOpOfRecursiveAlgo(6)
+    # figRecursiveFib = plt.figure()
+    # figRecursiveFib.suptitle('K for Recursive Fibanacci', fontsize=20)
+    # plt.plot(x, basicOperations, "bo")
+
     print(sequence)
     return (fib, gcd)
 
@@ -186,11 +194,12 @@ def selectionSortAnalysis_random():
     plt.ylabel('ylabel', fontsize=16)
     plt.show()
 selectionSortAnalysis_r()
-selectionSortAnalysis_sorted()
 selectionSortAnalysis_random()
+selectionSortAnalysis_sorted()
+
+
+
 
 '''
 input_list = [[2, 1],[3, 2], [5, 3], [8, 5], [13, 8], [21, 13], [34, 21], [55, 34], [89,55],[144, 89],[233, 144],[377, 233], [610, 377], [987, 610],[1597, 987], [2854, 1597], [4181, 2584], [6765, 4181], [10946    , 6765], [17711, 10946], [28657, 17711], [46368, 28657], [75025, 46368], [121393, 75025], [196418, 121393],     [317811, 196418]]
-
-
 '''
