@@ -9,7 +9,6 @@ import numpy as np
 from asymtoticAnal import algos
 
 
-
 fibAlgo = algos()
 expAlgo = algos()
 gcdAlgo = algos()
@@ -37,7 +36,6 @@ def basicOpOfRecursiveAlgo(kforFib):
 def fillFibSequence(n):
     for i in range(1, n):
         sequence.append([math.floor(fibAlgo.fibanacciFormula(i + 2)), math.floor(fibAlgo.fibanacciFormula(i + 1))])
-
 
 def fillGCD():
     fibAlgo.reset()
@@ -82,9 +80,7 @@ def displayKfor_GCD_FIB(k):
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
     plt.show()
-    plt.show()
 
-    displayK_for_fib(k)
 
     print(sequence)
     return (fib, gcd)
@@ -99,29 +95,18 @@ def displayK_for_fib(k):
     plt.ylabel('ylabel', fontsize=16)
     plt.show()
 
-def showExp1():
-    fig = plt.figure()
-    plt.plot(x, decByOneOperations, "bo")
-    fig.suptitle('Dec By one', fontsize=20)
+def showExp():
+    fig3 = plt.figure()
+    plt.plot(x, decByConst, "bo")
+    plt.plot(x, decByOneOperations, "go")
+    plt.plot(x, devAndConquer, "ro")
+    fig3.suptitle('Exponentiation', fontsize=20)
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
+    plt.legend(["Dec by Const", "Dec by one", "devid and conquer"])
+
     plt.show()
 
-def showExp2():
-    fig2 = plt.figure()
-    plt.plot(x, decByConst, "bo")
-    plt.title("Decrease by Const")
-    fig2.suptitle('Dec By const', fontsize=20)
-    plt.xlabel('xlabel', fontsize=18)
-    plt.ylabel('ylabel', fontsize=16)
-    plt.show()
-def showExp3():
-    fig3 = plt.figure()
-    plt.plot(x, devAndConquer, "bo")
-    fig3.suptitle('Devid and Conquer', fontsize=20)
-    plt.xlabel('xlabel', fontsize=18)
-    plt.ylabel('ylabel', fontsize=16)
-    plt.show()
 def readFile(fileName, array):
     inputsForSorting = []
     f = open("testSet\\" + fileName,"r")
@@ -132,27 +117,37 @@ def readFile(fileName, array):
 reversedData = []
 numOfComparisonsReversed = []
 
+
 sortedData = []
 numOfComparisonsSorted = []
+
 
 randomData = []
 numOfComparisonsRandom = []
 
 def selectionSortAnalysis_r():
     x.clear()
+    numComarisonsReversed = []
     for i in range(100, 1000, 100):
         x.append(i)
         readFile('data' + str(i) + '_rSorted.txt', reversedData)
 
-        reversed = selectionSortAlgo.selectionSort(reversedData)
-        numOfComparisonsReversed.append(reversed)
+        reversedSeleciton = selectionSortAlgo.selectionSort(reversedData)
+        reversedInsertion = selectionSortAlgo.selectionSort(reversedData)
+
+
+        numComarisonsReversed.append(reversedInsertion)
+        numOfComparisonsReversed.append(reversedSeleciton)
     fig5 = plt.figure()
     plt.plot(x, numOfComparisonsReversed, "bo")
+    plt.plot(x, numComarisonsReversed, "bo")
     plt.title("Selection Sort Reversed Input")
     fig5.suptitle('Reversed', fontsize=20)
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
     plt.show()
+
+
 def selectionSortAnalysis_sorted():
     x.clear()
     for i in range(100, 1000, 100):
@@ -168,6 +163,9 @@ def selectionSortAnalysis_sorted():
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
     plt.show()
+
+
+
 def selectionSortAnalysis_random():
     x.clear()
     for i in range(100, 1000, 100):
@@ -184,15 +182,10 @@ def selectionSortAnalysis_random():
     plt.ylabel('ylabel', fontsize=16)
     plt.show()
 
-
-
 def main():
 
     basicOperationExponent(400)
-    showExp1()
-    showExp2()
-    showExp3()
-
+    showExp()
     selectionSortAnalysis_r()
     selectionSortAnalysis_random()
     selectionSortAnalysis_sorted()
@@ -200,11 +193,13 @@ def main():
     displayK_for_fib(12)
     print(math.floor(kforTaskOne[0]), kforTaskOne[1])
 
+
+    insertionSort = []
+    readFile('data100.txt', insertionSort)
+    insertionSortAlgo.insertionSort(insertionSort)
+    print(insertionSort)
+
 main()
-
-
-
-
 '''
 input_list = [[2, 1],[3, 2], [5, 3], [8, 5], [13, 8], [21, 13], [34, 21], [55, 34], [89,55],[144, 89],[233, 144],[377, 233], [610, 377], [987, 610],[1597, 987], [2854, 1597], [4181, 2584], [6765, 4181], [10946    , 6765], [17711, 10946], [28657, 17711], [46368, 28657], [75025, 46368], [121393, 75025], [196418, 121393],     [317811, 196418]]
 '''
