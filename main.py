@@ -82,13 +82,20 @@ def displayKfor_GCD_FIB(k):
     plt.show()
     plt.show()
 
-    # basicOpOfRecursiveAlgo(6)
-    # figRecursiveFib = plt.figure()
-    # figRecursiveFib.suptitle('K for Recursive Fibanacci', fontsize=20)
-    # plt.plot(x, basicOperations, "bo")
+    displayK_for_fib(k)
 
     print(sequence)
     return (fib, gcd)
+def displayK_for_fib(k):
+    x.clear()
+    basicOperations.clear()
+    basicOpOfRecursiveAlgo(k)
+    fig = plt.figure()
+    plt.plot(x, basicOperations, "bo")
+    fig.suptitle('Kth term for fibnacci sequence', fontsize=20)
+    plt.xlabel('xlabel', fontsize=18)
+    plt.ylabel('ylabel', fontsize=16)
+    plt.show()
 
 def showExp1():
     fig = plt.figure()
@@ -109,35 +116,16 @@ def showExp2():
 def showExp3():
     fig3 = plt.figure()
     plt.plot(x, devAndConquer, "bo")
-    plt.title("Divide and Conquer")
+    fig3.suptitle('Devid and Conquer', fontsize=20)
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
     plt.show()
-
-
-
-basicOperationExponent(400)
-showExp1()
-showExp2()
-showExp3()
-kforTaskOne = displayKfor_GCD_FIB(39)
-print(math.floor(kforTaskOne[0]), kforTaskOne[1])
-
-
 def readFile(fileName, array):
     inputsForSorting = []
     f = open("testSet\\" + fileName,"r")
     for line in f:
         array.append(int(line.strip('\n')))
     return
-
-
-
-
-
-
-
-
 
 reversedData = []
 numOfComparisonsReversed = []
@@ -193,9 +181,21 @@ def selectionSortAnalysis_random():
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
     plt.show()
+
+
+
+
+basicOperationExponent(400)
+showExp1()
+showExp2()
+showExp3()
+
 selectionSortAnalysis_r()
 selectionSortAnalysis_random()
 selectionSortAnalysis_sorted()
+kforTaskOne = displayKfor_GCD_FIB(12)
+displayK_for_fib(12)
+print(math.floor(kforTaskOne[0]), kforTaskOne[1])
 
 
 
