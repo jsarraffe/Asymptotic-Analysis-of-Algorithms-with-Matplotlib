@@ -128,58 +128,72 @@ numOfComparisonsRandom = []
 def selectionSortAnalysis_r():
     x.clear()
     numComarisonsReversed = []
-    for i in range(100, 1000, 100):
+    for i in range(100, 2000, 400):
         x.append(i)
         readFile('data' + str(i) + '_rSorted.txt', reversedData)
 
-        reversedSeleciton = selectionSortAlgo.selectionSort(reversedData)
-        reversedInsertion = selectionSortAlgo.selectionSort(reversedData)
 
+        numComarisonsReversed.append( selectionSortAlgo.selectionSort(reversedData))
 
-        numComarisonsReversed.append(reversedInsertion)
-        numOfComparisonsReversed.append(reversedSeleciton)
+        numOfComparisonsReversed.append(selectionSortAlgo.insertionSort(reversedData))
+
     fig5 = plt.figure()
+    print(x)
+    print(numComarisonsReversed)
+    print(numOfComparisonsReversed)
     plt.plot(x, numOfComparisonsReversed, "bo")
-    plt.plot(x, numComarisonsReversed, "bo")
+    plt.plot(x, numComarisonsReversed, "ro")
     plt.title("Selection Sort Reversed Input")
     fig5.suptitle('Reversed', fontsize=20)
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
+
+    plt.legend(["selection sort"," insertion sort"])
     plt.show()
 
 
 def selectionSortAnalysis_sorted():
     x.clear()
-    for i in range(100, 1000, 100):
+    numComparisonsInsertion = []
+    for i in range(100, 2000, 400):
         x.append(i)
         readFile('data' + str(i) + '_sorted.txt', sortedData)
 
-        sorted = selectionSortAlgo.selectionSort(sortedData)
-        numOfComparisonsSorted.append(sorted)
+
+        numOfComparisonsSorted.append(selectionSortAlgo.selectionSort(sortedData))
+
+        numComparisonsInsertion.append(insertionSortAlgo.insertionSort(sortedData))
     fig6 = plt.figure()
     plt.plot(x, numOfComparisonsSorted, "bo")
+    plt.plot(x, numComparisonsInsertion, "ro")
     plt.title("Selection Sort Sorted Input")
     fig6.suptitle('Sorted', fontsize=20)
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
+    plt.legend(["selection sort"," insertion sort"])
+
     plt.show()
 
 
 
 def selectionSortAnalysis_random():
     x.clear()
-    for i in range(100, 1000, 100):
+    numComparisonsInsertion = []
+    for i in range(100, 2000, 400):
         x.append(i)
         readFile('data' + str(i) + '.txt', randomData)
 
-        randData = selectionSortAlgo.selectionSort(randomData)
-        numOfComparisonsRandom.append(randData)
+
+        numOfComparisonsRandom.append(selectionSortAlgo.selectionSort(randomData))
+        numComparisonsInsertion.append(insertionSortAlgo.selectionSort(randomData))
     fig7 = plt.figure()
     plt.plot(x, numOfComparisonsRandom, "bo")
+    plt.plot(x, numComparisonsInsertion, "ro")
     plt.title("Selection Sort with Random Input")
     fig7.suptitle('Random', fontsize=20)
     plt.xlabel('xlabel', fontsize=18)
     plt.ylabel('ylabel', fontsize=16)
+    plt.legend(["selection sort"," insertion sort"])
     plt.show()
 
 def main():

@@ -75,7 +75,6 @@ class algos:
                 self.basicOperation += 1
                 numOfComparisons.append(self.basicOperation)
                 if array[j] >= array[biggerIndex]:
-
                     biggerIndex = j
             array[biggerIndex], array[j] = array[len(array)-i-1], array[biggerIndex]
         return self.basicOperation
@@ -85,7 +84,6 @@ class algos:
         for i in range(1, len(array)):
             key = array[i]
             j = i - 1
-
             self.basicOperation += 2
             while j >= 0 and key < array[j]:
                 array[j + 1] = array[j]
