@@ -113,6 +113,14 @@ def showExp():
 def readFile(fileName, array):
     inputsForSorting = []
     f = open("testSet\\" + fileName,"r")
+
+    for line in f:
+        array.append(int(line.strip('\n')))
+    return
+def readFile(fileName, array):
+    inputsForSorting = []
+    f = open("smallSet\\" + fileName, "r")
+
     for line in f:
         array.append(int(line.strip('\n')))
     return
@@ -128,14 +136,14 @@ numOfComparisonsSorted = []
 randomData = []
 numOfComparisonsRandom = []
 
-def selectionSortAnalysis_r():
+def selectionSortAnalysis_r(start, end, increment):
     x.clear()
     comparisonsSelection = []
     comparisonsInsertion = []
     numComarisonsSelection = []
     numComparisonInsertion = []
 
-    for i in range(100, 2500, 400):
+    for i in range(start, end, increment):
         x.append(i)
 
         readFile('data' + str(i) + '_rSorted.txt', numComarisonsSelection)
@@ -161,13 +169,13 @@ def selectionSortAnalysis_r():
     plt.show()
 
 
-def selectionSortAnalysis_sorted():
+def selectionSortAnalysis_sorted(start, end, increment):
     x.clear()
     comparisonsSelection = []
     comparisonsInsertion = []
     numComarisonsSelection = []
     numComparisonInsertion = []
-    for i in range(100, 2500, 400):
+    for i in range(start, end, increment):
         x.append(i)
         readFile('data' + str(i) + '_sorted.txt', numComarisonsSelection)
         readFile('data' + str(i) + '_sorted.txt', numComparisonInsertion)
@@ -180,6 +188,7 @@ def selectionSortAnalysis_sorted():
     print(comparisonsInsertion)
     print(x)
     fig6 = plt.figure()
+
     plt.plot(x, comparisonsSelection, "bo")
     plt.plot(x, comparisonsInsertion, "ro")
     plt.title("Selection Sort Sorted Input")
@@ -190,13 +199,13 @@ def selectionSortAnalysis_sorted():
 
 
 
-def selectionSortAnalysis_random():
+def selectionSortAnalysis_random(start, end, increment):
     x.clear()
     comparisonsSelection = []
     comparisonsInsertion = []
     numComarisonsSelection = []
     numComparisonInsertion = []
-    for i in range(100, 2500, 400):
+    for i in range(start, end, increment):
         x.append(i)
         readFile('data' + str(i) + '.txt', numComarisonsSelection)
         readFile('data' + str(i) + '.txt', numComparisonInsertion)
@@ -220,22 +229,11 @@ def main():
 
     basicOperationExponent(400)
     showExp()
-    selectionSortAnalysis_r()
-    selectionSortAnalysis_random()
-    selectionSortAnalysis_sorted()
+    selectionSortAnalysis_r(100,2000,300)
+    selectionSortAnalysis_random(100,2000,300)
+    selectionSortAnalysis_sorted(100,2000,300)
     kforTaskOne = displayKfor_GCD_FIB(12)
     displayK_for_fib(12)
     print(math.floor(kforTaskOne[0]), kforTaskOne[1])
 
 main()
-# numComarisonsSelection = []
-# numComparisonInsertion = []
-#
-# readFile('data' + str(2000) + '_sorted.txt', numComarisonsSelection)
-# readFile('data' + str(2000) + '_sorted.txt', numComparisonInsertion)
-#
-# sComp = selectionSortAlgo.selectionSort(numComarisonsSelection)
-# iComp = insertionSortAlgo.insertionSort(numComparisonInsertion)
-#
-# print(sComp)
-# print(iComp)
