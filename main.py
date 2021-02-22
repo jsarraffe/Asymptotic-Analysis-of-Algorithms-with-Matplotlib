@@ -8,6 +8,9 @@ import numpy as np
 
 from asymtoticAnal import algos
 
+numIterations = 0
+
+
 
 fibAlgo = algos()
 expAlgo = algos()
@@ -127,20 +130,30 @@ numOfComparisonsRandom = []
 
 def selectionSortAnalysis_r():
     x.clear()
-    numComarisonsReversed = []
-    for i in range(100, 1000, 100):
+    comparisonsSelection = []
+    comparisonsInsertion = []
+    numComarisonsSelection = []
+    numComparisonInsertion = []
+    for i in range(100, 2500, 400):
         x.append(i)
-        readFile('data' + str(i) + '_rSorted.txt', reversedData)
+        readFile('data' + str(i) + '_rSorted.txt', numComarisonsSelection)
+        readFile('data' + str(i) + '_rSorted.txt', numComparisonInsertion)
 
-        reversedSeleciton = selectionSortAlgo.selectionSort(reversedData)
-        reversedInsertion = selectionSortAlgo.selectionSort(reversedData)
+        sComp = selectionSortAlgo.selectionSort(numComarisonsSelection)
+        iComp = insertionSortAlgo.insertionSort(numComparisonInsertion)
 
+        print(sComp)
+        comparisonsSelection.append(sComp)
+        comparisonsInsertion.append(iComp)
 
-        numComarisonsReversed.append(reversedInsertion)
-        numOfComparisonsReversed.append(reversedSeleciton)
+    print(comparisonsSelection)
+    print(x)
+    # print(x)
+    # print(numComarisonsSelection)
+    # print(numComparisonInsertion)
     fig5 = plt.figure()
-    plt.plot(x, numOfComparisonsReversed, "bo")
-    plt.plot(x, numComarisonsReversed, "bo")
+    plt.plot(x,comparisonsSelection, "bo")
+    plt.plot(x,comparisonsInsertion, "ro")
     plt.title("Selection Sort Reversed Input")
     fig5.suptitle('Reversed', fontsize=20)
     plt.xlabel('xlabel', fontsize=18)
@@ -150,14 +163,23 @@ def selectionSortAnalysis_r():
 
 def selectionSortAnalysis_sorted():
     x.clear()
-    for i in range(100, 1000, 100):
+    comparisonsSelection = []
+    comparisonsInsertion = []
+    selectionCompArray = []
+    insertionCompArray = []
+    for i in range(100, 6000, 400):
         x.append(i)
-        readFile('data' + str(i) + '_sorted.txt', sortedData)
+        readFile('data' + str(i) + '_sorted.txt', selectionCompArray)
+        readFile('data' + str(i) + '_sorted.txt', insertionCompArray)
+        s_Comp = selectionSortAlgo.selectionSort(selectionCompArray)
+        i_Comp = insertionSortAlgo.insertionSort(insertionCompArray)
 
-        sorted = selectionSortAlgo.selectionSort(sortedData)
-        numOfComparisonsSorted.append(sorted)
+        comparisonsSelection.append(s_Comp)
+        comparisonsInsertion.append(i_Comp)
+
     fig6 = plt.figure()
-    plt.plot(x, numOfComparisonsSorted, "bo")
+   # plt.plot(x, comparisonsSelection, "bo")
+    plt.plot(x, comparisonsInsertion, "ro")
     plt.title("Selection Sort Sorted Input")
     fig6.suptitle('Sorted', fontsize=20)
     plt.xlabel('xlabel', fontsize=18)
@@ -193,13 +215,15 @@ def main():
     displayK_for_fib(12)
     print(math.floor(kforTaskOne[0]), kforTaskOne[1])
 
-
-    insertionSort = []
-    readFile('data100.txt', insertionSort)
-    insertionSortAlgo.insertionSort(insertionSort)
-    print(insertionSort)
-
 main()
-'''
-input_list = [[2, 1],[3, 2], [5, 3], [8, 5], [13, 8], [21, 13], [34, 21], [55, 34], [89,55],[144, 89],[233, 144],[377, 233], [610, 377], [987, 610],[1597, 987], [2854, 1597], [4181, 2584], [6765, 4181], [10946    , 6765], [17711, 10946], [28657, 17711], [46368, 28657], [75025, 46368], [121393, 75025], [196418, 121393],     [317811, 196418]]
-'''
+# numComarisonsSelection = []
+# numComparisonInsertion = []
+#
+# readFile('data' + str(2000) + '_sorted.txt', numComarisonsSelection)
+# readFile('data' + str(2000) + '_sorted.txt', numComparisonInsertion)
+#
+# sComp = selectionSortAlgo.selectionSort(numComarisonsSelection)
+# iComp = insertionSortAlgo.insertionSort(numComparisonInsertion)
+#
+# print(sComp)
+# print(iComp)

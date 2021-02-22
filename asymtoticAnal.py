@@ -68,27 +68,27 @@ class algos:
         return self.basicOperation
 
     def selectionSort(self, array):
-        numOfComparisons = []
+        numOpertions = 0
         for i in range(0, len(array)-1):
             biggerIndex = 0
             for j in range (1, len(array)-i):
-                self.basicOperation += 1
-                numOfComparisons.append(self.basicOperation)
+                numOpertions += 1
                 if array[j] >= array[biggerIndex]:
 
                     biggerIndex = j
             array[biggerIndex], array[j] = array[len(array)-i-1], array[biggerIndex]
-        return self.basicOperation
+        return numOpertions
 
 
     def insertionSort(self, array):
+        numOperations = 0
         for i in range(1, len(array)):
             key = array[i]
             j = i - 1
-
-            self.basicOperation += 2
             while j >= 0 and key < array[j]:
+                numOperations += 2
                 array[j + 1] = array[j]
                 j -= 1
+            numOperations += 2
             array[j + 1] = key
-        return self.basicOperation
+        return numOperations
