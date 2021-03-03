@@ -76,6 +76,9 @@ def displayKfor_GCD_FIB(k):
     fillGCD()
 
     fib = fibAlgo.fibanacciFormula(k)
+    print(math.floor(fibAlgo.fibanacciFormula(k)))
+    print(gcdAlgo.gcd(k+1, k))
+
     gcd = gcdAlgo.gcd(k+1, k)
     fig0 = plt.figure()
     plt.plot(x, numOfModulos, "bo")
@@ -117,7 +120,7 @@ def readFile(fileName, array):
     for line in f:
         array.append(int(line.strip('\n')))
     return
-def readFile(fileName, array):
+def readSmallFile(fileName, array):
     inputsForSorting = []
     f = open("smallSet\\" + fileName, "r")
 
@@ -142,17 +145,29 @@ def selectionSortAnalysis_r(start, end, increment):
     comparisonsInsertion = []
     numComarisonsSelection = []
     numComparisonInsertion = []
+    if end > 100:
+        for i in range(start, end, increment):
+            x.append(i)
 
-    for i in range(start, end, increment):
-        x.append(i)
+            readFile('data' + str(i) + '_rSorted.txt', numComarisonsSelection)
+            readFile('data' + str(i) + '_rSorted.txt', numComparisonInsertion)
 
-        readFile('data' + str(i) + '_rSorted.txt', numComarisonsSelection)
-        readFile('data' + str(i) + '_rSorted.txt', numComparisonInsertion)
+            comparisonsSelection.append(selectionSortAlgo.selectionSort(numComarisonsSelection))
+            comparisonsInsertion.append(insertionSortAlgo.insertionSort(numComparisonInsertion))
+            numComarisonsSelection.clear()
+            numComparisonInsertion.clear()
+    elif end < 100:
+        for i in range(start, end, increment):
+            x.append(i)
 
-        comparisonsSelection.append(selectionSortAlgo.selectionSort(numComarisonsSelection))
-        comparisonsInsertion.append(insertionSortAlgo.insertionSort(numComparisonInsertion))
-        numComarisonsSelection.clear()
-        numComparisonInsertion.clear()
+            readSmallFile('data' + str(i) + '_rSorted.txt', numComarisonsSelection)
+            readSmallFile('data' + str(i) + '_rSorted.txt', numComparisonInsertion)
+
+            comparisonsSelection.append(selectionSortAlgo.selectionSort(numComarisonsSelection))
+            comparisonsInsertion.append(insertionSortAlgo.insertionSort(numComparisonInsertion))
+            numComarisonsSelection.clear()
+            numComparisonInsertion.clear()
+
 
     # print(comparisonsSelection)
     # print(x)
@@ -175,15 +190,28 @@ def selectionSortAnalysis_sorted(start, end, increment):
     comparisonsInsertion = []
     numComarisonsSelection = []
     numComparisonInsertion = []
-    for i in range(start, end, increment):
-        x.append(i)
-        readFile('data' + str(i) + '_sorted.txt', numComarisonsSelection)
-        readFile('data' + str(i) + '_sorted.txt', numComparisonInsertion)
 
-        comparisonsSelection.append(selectionSortAlgo.selectionSort(numComarisonsSelection))
-        comparisonsInsertion.append(insertionSortAlgo.insertionSort(numComparisonInsertion))
-        numComarisonsSelection.clear()
-        numComparisonInsertion.clear()
+    if end > 100:
+        for i in range(start, end, increment):
+            x.append(i)
+            readFile('data' + str(i) + '_sorted.txt', numComarisonsSelection)
+            readFile('data' + str(i) + '_sorted.txt', numComparisonInsertion)
+
+            comparisonsSelection.append(selectionSortAlgo.selectionSort(numComarisonsSelection))
+            comparisonsInsertion.append(insertionSortAlgo.insertionSort(numComparisonInsertion))
+            numComarisonsSelection.clear()
+            numComparisonInsertion.clear()
+    elif end < 100:
+        for i in range(start, end, increment):
+            x.append(i)
+            readSmallFile('data' + str(i) + '_sorted.txt', numComarisonsSelection)
+            readSmallFile('data' + str(i) + '_sorted.txt', numComparisonInsertion)
+
+            comparisonsSelection.append(selectionSortAlgo.selectionSort(numComarisonsSelection))
+            comparisonsInsertion.append(insertionSortAlgo.insertionSort(numComparisonInsertion))
+            numComarisonsSelection.clear()
+            numComparisonInsertion.clear()
+
     print(comparisonsSelection)
     print(comparisonsInsertion)
     print(x)
@@ -205,15 +233,28 @@ def selectionSortAnalysis_random(start, end, increment):
     comparisonsInsertion = []
     numComarisonsSelection = []
     numComparisonInsertion = []
-    for i in range(start, end, increment):
-        x.append(i)
-        readFile('data' + str(i) + '.txt', numComarisonsSelection)
-        readFile('data' + str(i) + '.txt', numComparisonInsertion)
 
-        comparisonsSelection.append(selectionSortAlgo.selectionSort(numComarisonsSelection))
-        comparisonsInsertion.append(insertionSortAlgo.insertionSort(numComparisonInsertion))
-        numComarisonsSelection.clear()
-        numComparisonInsertion.clear()
+
+    if end > 100:
+        for i in range(start, end, increment):
+            x.append(i)
+            readFile('data' + str(i) + '.txt', numComarisonsSelection)
+            readFile('data' + str(i) + '.txt', numComparisonInsertion)
+
+            comparisonsSelection.append(selectionSortAlgo.selectionSort(numComarisonsSelection))
+            comparisonsInsertion.append(insertionSortAlgo.insertionSort(numComparisonInsertion))
+            numComarisonsSelection.clear()
+            numComparisonInsertion.clear()
+    elif end < 100:
+        for i in range(start, end, increment):
+            x.append(i)
+            readSmallFile('data' + str(i) + '.txt', numComarisonsSelection)
+            readSmallFile('data' + str(i) + '.txt', numComparisonInsertion)
+
+            comparisonsSelection.append(selectionSortAlgo.selectionSort(numComarisonsSelection))
+            comparisonsInsertion.append(insertionSortAlgo.insertionSort(numComparisonInsertion))
+            numComarisonsSelection.clear()
+            numComparisonInsertion.clear()
 
     fig7 = plt.figure()
     plt.plot(x, comparisonsSelection, "bo")
@@ -227,13 +268,74 @@ def selectionSortAnalysis_random(start, end, increment):
 
 def main():
 
-    basicOperationExponent(400)
-    showExp()
-    selectionSortAnalysis_r(100,2000,300)
-    selectionSortAnalysis_random(100,2000,300)
-    selectionSortAnalysis_sorted(100,2000,300)
-    kforTaskOne = displayKfor_GCD_FIB(12)
-    displayK_for_fib(12)
-    print(math.floor(kforTaskOne[0]), kforTaskOne[1])
+    mode = input("Select 1, To Enter User Testing Mode: \n"
+                 "Select 2, To Enter Scatter Plot Mode:  \n"
+                 )
+
+    if mode == '1':
+        k = int(input("Ener a valuie for k, to see Fib(k) and GCD(m,n): "))
+        fibAlgo.reset();
+        print(math.floor(fibAlgo.fibanacciFormula(k)))
+        sequence.clear()
+        fillFibSequence(k)
+        print(sequence)
+
+
+
+        a = int(input("please enter a value for a: "))
+        n = int(input("please enter a value for n: "))
+
+        algo1 = expAlgo.expDecByOne(a, n)
+
+        algo2 = expAlgo.expDecByConstFact(a, n)
+
+        algo3 = expAlgo.devideAndConquer(a, n)
+
+
+        print("Computer Using Decrease by 1")
+        print(algo1)
+        print("Computer Using Decrease by Constant:")
+
+        print((algo2))
+
+        print("Computer Using Decrease and Conquer: ")
+        print(algo3)
+
+
+
+        selection = []
+        insertion = []
+        file = []
+
+        listSize = int(input("Please enter a list size n, between 10-100 at an increment of 10: "))
+
+        readSmallFile('data' + str(listSize) + '.txt', file)
+
+        selectionSort = readSmallFile('data' + str(listSize) + '.txt', selection)
+
+        insertionSort = readSmallFile('data' + str(listSize) + '.txt', insertion)
+
+        # selectionSortAlgo.selectionSort(selection)
+        print("For selection sort")
+        print(selection)
+        # insertionSortAlgo.insertionSort(insertion)
+        print("For insertion sort")
+        print(insertion)
+        # selectionSortAnalysis_r(10, listSize, 10)
+        # selectionSortAnalysis_random(10, listSize, 10)
+        # selectionSortAnalysis_sorted(10, listSize, 10)
+        main()
+
+    else:
+
+        basicOperationExponent(400)
+        showExp()
+        selectionSortAnalysis_r(100, 2000, 300)
+        selectionSortAnalysis_random(100, 2000, 300)
+        selectionSortAnalysis_sorted(100, 2000, 300)
+        kforTaskOne = displayKfor_GCD_FIB(12)
+        displayK_for_fib(12)
+        print(math.floor(kforTaskOne[0]), kforTaskOne[1])
+
 
 main()
