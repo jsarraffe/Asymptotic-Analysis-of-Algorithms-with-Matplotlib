@@ -4,7 +4,7 @@
 import matplotlib.pyplot as plt
 import math
 
-import numpy as np
+
 
 from asymtoticAnal import algos
 
@@ -76,40 +76,48 @@ def displayKfor_GCD_FIB(k):
     fillGCD()
 
     fib = fibAlgo.fibanacciFormula(k)
-    print(math.floor(fibAlgo.fibanacciFormula(k)))
-    print(gcdAlgo.gcd(k+1, k))
+    # print(math.floor(fibAlgo.fibanacciFormula(k)))
+    # print(gcdAlgo.gcd(k+1, k))
+
+    superscript = str.maketrans("2", "2")
 
     gcd = gcdAlgo.gcd(k+1, k)
     fig0 = plt.figure()
     plt.plot(x, numOfModulos, "bo")
-    fig0.suptitle('GCD with worse case input', fontsize=20)
-    plt.xlabel('xlabel', fontsize=18)
-    plt.ylabel('ylabel', fontsize=16)
+    fig0.suptitle('GCD with consecutive elements of the Fibnacci sequence as inputs.', fontsize=12)
+    plt.xlabel('k', fontsize=18)
+    plt.ylabel('# of divisions', fontsize=16)
+    plt.legend([" D(n) ∈ ϴ(logn)"])
+
     plt.show()
 
 
    # print(sequence)
     return (fib, gcd)
 def displayK_for_fib(k):
+    superscript = str.maketrans("2", "²")
     x.clear()
     basicOperations.clear()
     basicOpOfRecursiveAlgo(k)
     fig = plt.figure()
     plt.plot(x, basicOperations, "bo")
-    fig.suptitle('Kth term for fibnacci sequence', fontsize=20)
-    plt.xlabel('xlabel', fontsize=18)
-    plt.ylabel('ylabel', fontsize=16)
+    fig.suptitle('Analysis of the Recursive Fibonacci Implementation', fontsize=15)
+    plt.xlabel('k', fontsize=18)
+    plt.ylabel('# of additions', fontsize=16)
+    plt.legend(["A(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")"])
+
     plt.show()
 
 def showExp():
+    superscript = str.maketrans("n", "ⁿ")
     fig3 = plt.figure()
     plt.plot(x, decByConst, "bo")
     plt.plot(x, decByOneOperations, "go")
     plt.plot(x, devAndConquer, "ro")
-    fig3.suptitle('Exponentiation', fontsize=20)
-    plt.xlabel('xlabel', fontsize=18)
-    plt.ylabel('ylabel', fontsize=16)
-    plt.legend(["Dec by Const", "Dec by one", "devid and conquer"])
+    fig3.suptitle('Comparison of algorithms for exponentiation', fontsize=20)
+    plt.xlabel(" n ")
+    plt.ylabel('# of multiplications', fontsize=16)
+    plt.legend(["Dec-by-Const: ϴ(n)", "Dec-by-one:  ϴ(logn)", "Divide-and-conquer ϴ(n)"])
 
     plt.show()
 
@@ -174,14 +182,20 @@ def selectionSortAnalysis_r(start, end, increment):
     # print(x)
     # print(numComarisonsSelection)
     # print(numComparisonInsertion)
+    superscript = str.maketrans("2", "²")
+
+
     fig5 = plt.figure()
     plt.plot(x,comparisonsSelection, "bo")
     plt.plot(x,comparisonsInsertion, "ro")
-    plt.title("Selection Sort Reversed Input")
-    fig5.suptitle('Reversed', fontsize=20)
-    plt.xlabel('xlabel', fontsize=18)
-    plt.ylabel('ylabel', fontsize=16)
+    fig5.suptitle('Reversed input Analysis for Sorting Algorithms', fontsize=15)
+    plt.xlabel('n', fontsize=18)
+    plt.ylabel('# of comparisons', fontsize=16)
+    plt.legend(["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n)"])
+
     plt.show()
+
+
 
 
 def selectionSortAnalysis_sorted(start, end, increment):
@@ -212,17 +226,20 @@ def selectionSortAnalysis_sorted(start, end, increment):
             numComarisonsSelection.clear()
             numComparisonInsertion.clear()
 
-    print(comparisonsSelection)
-    print(comparisonsInsertion)
-    print(x)
+    # print(comparisonsSelection)
+    # print(comparisonsInsertion)
+    # print(x)
     fig6 = plt.figure()
+
+    superscript = str.maketrans("2", "²")
 
     plt.plot(x, comparisonsSelection, "bo")
     plt.plot(x, comparisonsInsertion, "ro")
-    plt.title("Selection Sort Sorted Input")
-    fig6.suptitle('Sorted', fontsize=20)
-    plt.xlabel('xlabel', fontsize=18)
-    plt.ylabel('ylabel', fontsize=16)
+    fig6.suptitle('Sorted input Analysis for Sorting Algorithms', fontsize=15)
+    plt.xlabel('size of list as n', fontsize=18)
+    plt.ylabel('# of comparisons', fontsize=16)
+
+    plt.legend(["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n)"])
     plt.show()
 
 
@@ -257,30 +274,37 @@ def selectionSortAnalysis_random(start, end, increment):
             numComparisonInsertion.clear()
 
     fig7 = plt.figure()
+    superscript = str.maketrans("2", "²")
     plt.plot(x, comparisonsSelection, "bo")
     plt.plot(x, comparisonsInsertion, "ro")
 
-    plt.title("Selection Sort with Random Input")
-    fig7.suptitle('Random', fontsize=20)
-    plt.xlabel('xlabel', fontsize=18)
-    plt.ylabel('ylabel', fontsize=16)
+    fig7.suptitle('Random input Analysis for Sorting Algorithms', fontsize=15)
+    plt.xlabel('size of list as n', fontsize=18)
+    plt.ylabel('# of comparisons', fontsize=16)
+    plt.legend(["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n" + "2".translate(superscript) + ")"])
+
     plt.show()
 
 def main():
 
-    mode = input("Select 1, To Enter User Testing Mode: \n"
-                 "Select 2, To Enter Scatter Plot Mode:  \n"
+
+    mode = input("Select 1 To Enter User Testing Model: \n"
+                 "Select 2 To Enter Scatter Plot Model:  \n"
+                 "Select q To Quit:  \n"
                  )
 
     if mode == '1':
-        k = int(input("Ener a valuie for k, to see Fib(k) and GCD(m,n): "))
+        k = int(input("Ener a value for k, to see Fib(k) and GCD(k+1,k) =  "))
         fibAlgo.reset();
-        print(math.floor(fibAlgo.fibanacciFormula(k)))
+        print("Fib(k) =  " + str(math.floor((fibAlgo.fibanacciFormula(k)))))
+
         sequence.clear()
         fillFibSequence(k)
+        gcdAlgo.reset()
+
+        print("GCD(k+1,k) =  " + str(gcdAlgo.gcd(sequence[len(sequence) - 1][0], sequence[len(sequence) - 1][1])))
+
         print(sequence)
-
-
 
         a = int(input("please enter a value for a: "))
         n = int(input("please enter a value for n: "))
@@ -291,17 +315,14 @@ def main():
 
         algo3 = expAlgo.devideAndConquer(a, n)
 
-
-        print("Computer Using Decrease by 1")
+        print("Computed Using Decrease-by-1")
         print(algo1)
-        print("Computer Using Decrease by Constant:")
+        print("Computed Using Decrease-by-Constant:")
 
         print((algo2))
 
-        print("Computer Using Decrease and Conquer: ")
+        print("Computed Using Decrease-and-Conquer: ")
         print(algo3)
-
-
 
         selection = []
         insertion = []
@@ -325,17 +346,23 @@ def main():
         # selectionSortAnalysis_random(10, listSize, 10)
         # selectionSortAnalysis_sorted(10, listSize, 10)
         main()
-
-    else:
-
+        print("\n")
+    elif mode == '2':
+        decByConst.clear()
+        devAndConquer.clear()
+        decByOneOperations.clear()
         basicOperationExponent(400)
         showExp()
-        selectionSortAnalysis_r(100, 2000, 300)
-        selectionSortAnalysis_random(100, 2000, 300)
-        selectionSortAnalysis_sorted(100, 2000, 300)
+        selectionSortAnalysis_r(100, 6000, 500)
+        selectionSortAnalysis_random(100, 6000, 500)
+        selectionSortAnalysis_sorted(100, 6000, 500)
         kforTaskOne = displayKfor_GCD_FIB(12)
         displayK_for_fib(12)
-        print(math.floor(kforTaskOne[0]), kforTaskOne[1])
+        # print(math.floor(kforTaskOne[0]), kforTaskOne[1])
+        main()
+        print("\n")
+
+
 
 
 main()
