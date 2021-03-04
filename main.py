@@ -40,11 +40,13 @@ def fillFibSequence(n):
     for i in range(1, n):
         sequence.append([math.floor(fibAlgo.fibanacciFormula(i + 2)), math.floor(fibAlgo.fibanacciFormula(i + 1))])
 
+
+
 def fillGCD():
     fibAlgo.reset()
     for i in sequence:
         fibAlgo.gcd(i[0], i[1])
-        x.append(i[1])  # which one do I use "Plug in n"
+        x.append(i)  # which one do I use "Plug in n"
         numOfModulos.append(fibAlgo.getBasicOp())
         fibAlgo.reset()
 
@@ -79,11 +81,20 @@ def displayKfor_GCD_FIB(k):
     # print(math.floor(fibAlgo.fibanacciFormula(k)))
     # print(gcdAlgo.gcd(k+1, k))
 
+    w = []
+
+    z= []
+    for i in range(0,len(sequence)):
+        gcdAlgo.reset()
+        gcdAlgo.gcd(sequence[i][0],sequence[i][1])
+        w.append(gcdAlgo.basicOperation)
+        z.append(i)
+
     superscript = str.maketrans("2", "2")
 
-    gcd = gcdAlgo.gcd(k+1, k)
+
     fig0 = plt.figure()
-    plt.plot(x, numOfModulos, "bo")
+    plt.plot(z, w, "bo")
     fig0.suptitle('GCD with consecutive elements of the Fibnacci sequence as inputs.', fontsize=12)
     plt.xlabel('k', fontsize=18)
     plt.ylabel('# of divisions', fontsize=16)
@@ -93,7 +104,7 @@ def displayKfor_GCD_FIB(k):
 
 
    # print(sequence)
-    return (fib, gcd)
+
 def displayK_for_fib(k):
     superscript = str.maketrans("2", "²")
     x.clear()
@@ -353,10 +364,10 @@ def main():
         decByOneOperations.clear()
         basicOperationExponent(400)
         showExp()
-        selectionSortAnalysis_r(100, 6000, 500)
-        selectionSortAnalysis_random(100, 6000, 500)
-        selectionSortAnalysis_sorted(100, 6000, 500)
-        kforTaskOne = displayKfor_GCD_FIB(12)
+        selectionSortAnalysis_r(100, 2000, 500)
+        selectionSortAnalysis_random(100, 2000, 500)
+        selectionSortAnalysis_sorted(100, 2000, 500)
+        kforTaskOne = displayKfor_GCD_FIB(30)
         displayK_for_fib(12)
         # print(math.floor(kforTaskOne[0]), kforTaskOne[1])
         main()
