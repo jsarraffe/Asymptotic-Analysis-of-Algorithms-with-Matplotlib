@@ -126,7 +126,7 @@ def showExp():
     fig3.suptitle('Comparison of algorithms for exponentiation', fontsize=20)
     plt.xlabel(" n ")
     plt.ylabel('# of multiplications', fontsize=16)
-    plt.legend(["Dec-by-Const: ϴ(n)", "Dec-by-one:  ϴ(logn)", "Divide-and-conquer ϴ(n)"])
+    plt.legend(["Dec-by-Const: M(n) ∈ ϴ(logn)", "Dec-by-one: M(n) ∈   ϴ(n)", "Divide-and-conquer: M(n) ∈  ϴ(n)"])
 
     plt.show()
 
@@ -253,6 +253,8 @@ def selectionSortAnalysis_sorted(start, end, increment):
 
 
 
+
+
 def selectionSortAnalysis_random(start, end, increment):
     x.clear()
     comparisonsSelection = []
@@ -310,6 +312,7 @@ def main():
         sequence.clear()
         fillFibSequence(k)
         gcdAlgo.reset()
+        gcdAlgo.gcd(sequence[len(sequence) - 1][0], sequence[len(sequence) - 1][1])
 
         print("GCD(k+1,k) =  " + str(gcdAlgo.gcd(sequence[len(sequence) - 1][0], sequence[len(sequence) - 1][1])))
 
@@ -362,11 +365,11 @@ def main():
         decByOneOperations.clear()
         basicOperationExponent(400)
         showExp()
-        selectionSortAnalysis_r(100, 2000, 500)
-        selectionSortAnalysis_random(100, 2000, 500)
-        selectionSortAnalysis_sorted(100, 2000, 500)
+        selectionSortAnalysis_r(100, 7000, 500)
+        selectionSortAnalysis_random(100, 7000, 500)
+        selectionSortAnalysis_sorted(100, 7000, 500)
         displayKfor_GCD_FIB(30)
-        displayK_for_fib(30)
+        displayK_for_fib(20)
         # print(math.floor(kforTaskOne[0]), kforTaskOne[1])
         main()
         print("\n")
