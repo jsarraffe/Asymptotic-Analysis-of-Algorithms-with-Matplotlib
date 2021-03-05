@@ -37,8 +37,8 @@ def basicOpOfRecursiveAlgo(kforFib):
         fibAlgo.reset()
 
 def fillFibSequence(n):
-    for i in range(1, n):
-        sequence.append([math.floor(fibAlgo.fibanacciFormula(i + 2)), math.floor(fibAlgo.fibanacciFormula(i + 1))])
+    for i in range(0, n):
+        sequence.append([math.floor(fibAlgo.fibanacciFormula(i + 1)), math.floor(fibAlgo.fibanacciFormula(i))])
 
 
 
@@ -113,7 +113,7 @@ def displayK_for_fib(k):
     fig.suptitle('Analysis of the Recursive Fibonacci Implementation', fontsize=15)
     plt.xlabel('k', fontsize=18)
     plt.ylabel('# of additions', fontsize=16)
-    plt.legend(["A(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")"])
+    plt.legend(["A(k) ∈ ϴ(" + "k" + "2".translate(superscript) + ")"])
 
     plt.show()
 
@@ -312,9 +312,9 @@ def main():
         sequence.clear()
         fillFibSequence(k)
         gcdAlgo.reset()
-        gcdAlgo.gcd(sequence[len(sequence) - 1][0], sequence[len(sequence) - 1][1])
+        x = gcdAlgo.gcd(sequence[len(sequence) - 1][0], sequence[len(sequence) - 1][1])
 
-        print("GCD(k+1,k) =  " + str(gcdAlgo.gcd(sequence[len(sequence) - 1][0], sequence[len(sequence) - 1][1])))
+        print("GCD(k+1,k) =  " + str(x))
 
         print(sequence)
 
@@ -365,9 +365,9 @@ def main():
         decByOneOperations.clear()
         basicOperationExponent(400)
         showExp()
-        selectionSortAnalysis_r(100, 7000, 500)
-        selectionSortAnalysis_random(100, 7000, 500)
-        selectionSortAnalysis_sorted(100, 7000, 500)
+        selectionSortAnalysis_r(100, 2000, 500)
+        selectionSortAnalysis_random(100, 2000, 500)
+        selectionSortAnalysis_sorted(100, 2000, 500)
         displayKfor_GCD_FIB(30)
         displayK_for_fib(20)
         # print(math.floor(kforTaskOne[0]), kforTaskOne[1])

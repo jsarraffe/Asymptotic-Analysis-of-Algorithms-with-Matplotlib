@@ -28,9 +28,11 @@ class algos:
 
         #used this for sequence instead of iterative algorithm
 
-        oslash = ((1 + math.sqrt(5)) / 2)
-        oslashHat = -1 / oslash
-        return (1 / math.sqrt(5)) * ((oslash ** n) - (oslashHat ** n - 1))
+        sequence = [0, 1, 1]
+        for i in range(2, n):
+            sequence.append(sequence[-1] + sequence[-2])
+        return sequence[n]
+
 
     def reset(self):
         self.basicOperation = 0
