@@ -112,7 +112,7 @@ def displayK_for_fib(k):
     plt.plot(x, basicOperations, "bo")
     fig.suptitle('Recursive Fibonacci Implementation', fontsize=15)
     plt.xlabel('k', fontsize=18)
-    plt.ylabel('# of additions', fontsize=16)
+    plt.ylabel('# of additions', fontsize=14)
     plt.legend(["A(k) ∈ ϴ(" + "k" + "2".translate(superscript) + ")"])
 
     plt.show()
@@ -129,12 +129,12 @@ def showExp():
     plt.legend(["Decrease-by-constant: M(n) ∈ ϴ(log(n))", "Decrease-by-one: M(n) ∈   ϴ(n)", "Divide-and-conquer: M(n) ∈  ϴ(n)"])
 
     plt.show()
-    figx = plt.figure()
-    plt.plot(x, decByConst, "bo")
-    figx.suptitle('Decrease-By-Constant closer look', fontsize=16)
-    plt.xlabel(" n ")
-    plt.ylabel('# of multiplications', fontsize=18)
-    plt.legend(["Decease-by-Constant: M(n) ∈ ϴ(log(n))"])
+    # figx = plt.figure()
+    # plt.plot(x, decByConst, "bo")
+    # figx.suptitle('Decrease-By-Constant closer look', fontsize=16)
+    # plt.xlabel(" n ")
+    # plt.ylabel('# of multiplications', fontsize=18)
+    # plt.legend(["Decease-by-Constant: M(n) ∈ ϴ(log(n))"])
 
 def readFile(fileName, array):
     inputsForSorting = []
@@ -256,16 +256,17 @@ def selectionSortAnalysis_sorted(start, end, increment):
 
     plt.legend(["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n)"])
     plt.show()
+    # fig10 = plt.figure()
+    # plt.plot(x, comparisonsInsertion, "ro")
+    # fig10.suptitle('A closer look at Insertion Sort with Sorted Input', fontsize=15)
+    # plt.xlabel('size of list as n', fontsize=18)
+    # plt.ylabel('# of comparisons', fontsize=16)
+    #
+    # plt.legend(
+    #     ["Insertion Sort: C(n) ∈ ϴ(n)"])
+    # plt.show()
 
-    fig10 = plt.figure()
-    plt.plot(x, comparisonsInsertion, "ro")
-    fig10.suptitle('A closer look at Insertion Sort with Sorted Input', fontsize=15)
-    plt.xlabel('size of list as n', fontsize=18)
-    plt.ylabel('# of comparisons', fontsize=16)
 
-    plt.legend(
-        ["Insertion Sort: C(n) ∈ ϴ(n)"])
-    plt.show()
 
 
 
@@ -312,85 +313,122 @@ def selectionSortAnalysis_random(start, end, increment):
 
     plt.show()
 
-def main():
-
-
-    mode = input("Select 1 To Enter User Testing Model: \n"
-                 "Select 2 To Enter Scatter Plot Model:  \n"
-                 "Select q To Quit:  \n"
-                 )
-
+def modes(mode):
     if mode == '1':
-        k = int(input("Ener a value for k, to see Fib(k) and GCD(k+1,k) =  "))
-        fibAlgo.reset();
-        print("Fib(k) =  " + str(math.floor((fibAlgo.fibanacciFormula(k)))))
 
-        sequence.clear()
-        fillFibSequence(k)
-        gcdAlgo.reset()
-        x = gcdAlgo.gcd(sequence[len(sequence) - 1][0], sequence[len(sequence) - 1][1])
+        userTask = input( "\n" 
+                          "User Testing Mode: \n"
+                          "______________________________________\n"
+                         "Select 1 For Fibonacci and Euclids: \n"
+                         "Select 2 For Exponentials:  \n"
+                         "Select 3 For Sorting Algorithms:  \n"
+                         "Select 4 to Select Mode:  \n"
 
-        print("GCD(k+1,k) =  " + str(x))
+                         )
+        if userTask == "1":
+            k = int(input("Ener a value for k, to see Fib(k) and GCD(k+1,k) =  "))
+            fibAlgo.reset();
+            print("Fib(k) =  " + str(math.floor((fibAlgo.fibanacciFormula(k)))))
 
-        print(sequence)
+            sequence.clear()
+            fillFibSequence(k)
+            gcdAlgo.reset()
+            x = gcdAlgo.gcd(sequence[len(sequence) - 1][0], sequence[len(sequence) - 1][1])
 
-        a = int(input("please enter a value for a: "))
-        n = int(input("please enter a value for n: "))
+            print("GCD(k+1,k) =  " + str(x))
+            modes("1")
 
-        algo1 = expAlgo.expDecByOne(a, n)
+        if userTask == "2":
 
-        algo2 = expAlgo.expDecByConstFact(a, n)
+            a = int(input("please enter a value for a: "))
+            n = int(input("please enter a value for n: "))
 
-        algo3 = expAlgo.devideAndConquer(a, n)
+            algo1 = expAlgo.expDecByOne(a, n)
 
-        print("Computed Using Decrease-by-1")
-        print(algo1)
-        print("Computed Using Decrease-by-Constant:")
+            algo2 = expAlgo.expDecByConstFact(a, n)
 
-        print((algo2))
+            algo3 = expAlgo.devideAndConquer(a, n)
 
-        print("Computed Using Decrease-and-Conquer: ")
-        print(algo3)
+            print("Computed Using Decrease-by-1:")
+            print(algo1)
+            print("Computed Using Decrease-by-Constant:")
 
-        selection = []
-        insertion = []
-        file = []
+            print((algo2))
 
-        listSize = int(input("Please enter a list size n, between 10-100 at an increment of 10: "))
+            print("Computed Using Decrease-and-Conquer: ")
+            print(algo3)
+            modes("1")
+        elif userTask == "3":
+            selection = []
+            insertion = []
+            file = []
 
-        readSmallFile('data' + str(listSize) + '.txt', file)
+            listSize = int(input("Please enter a list size n, between 10-100 at an increment of 10: "))
 
-        selectionSort = readSmallFile('data' + str(listSize) + '.txt', selection)
+            readSmallFile('data' + str(listSize) + '.txt', file)
 
-        insertionSort = readSmallFile('data' + str(listSize) + '.txt', insertion)
+            selectionSort = readSmallFile('data' + str(listSize) + '.txt', selection)
 
-        # selectionSortAlgo.selectionSort(selection)
-        print("For selection sort")
-        print(selection)
-        # insertionSortAlgo.insertionSort(insertion)
-        print("For insertion sort")
-        print(insertion)
-        # selectionSortAnalysis_r(10, listSize, 10)
-        # selectionSortAnalysis_random(10, listSize, 10)
-        # selectionSortAnalysis_sorted(10, listSize, 10)
-        main()
-        print("\n")
+            insertionSort = readSmallFile('data' + str(listSize) + '.txt', insertion)
+
+            # selectionSortAlgo.selectionSort(selection)
+            print("For selection sort")
+            print(selection)
+            # insertionSortAlgo.insertionSort(insertion)
+            print("For insertion sort")
+            print(insertion)
+            # selectionSortAnalysis_r(10, listSize, 10)
+            # selectionSortAnalysis_random(10, listSize, 10)
+            # selectionSortAnalysis_sorted(10, listSize, 10)
+            modes("1")
+        elif userTask == "4":
+            main()
     elif mode == '2':
+        userTask = input("______________________________________\n"
+
+                         "Select 1 Fibonacci Scatter Plot: \n"
+                         "Select 2 Exponential Scatter Plot:  \n"
+                         "Select 3 Insertion and Selecion Sort Plot:  \n"
+                         "Select 4 to Select Mode:  \n"
+
+
+                         )
         decByConst.clear()
         devAndConquer.clear()
         decByOneOperations.clear()
-        displayK_for_fib(20)
-        displayKfor_GCD_FIB(30)
+        if userTask == "1":
 
-        basicOperationExponent(400)
-        showExp()
-        selectionSortAnalysis_r(100, 4000, 500)
-        selectionSortAnalysis_random(100, 4000, 500)
-        selectionSortAnalysis_sorted(100, 4000, 500)
+            displayK_for_fib(24)
+            displayKfor_GCD_FIB(30)
+            modes("2")
 
-        # print(math.floor(kforTaskOne[0]), kforTaskOne[1])
-        main()
-        print("\n")
+        elif userTask == "2":
+            basicOperationExponent(400)
+            showExp()
+            modes("2")
+        elif userTask == "3":
+            selectionSortAnalysis_r(100, 2000, 500)
+            selectionSortAnalysis_random(100, 2000, 500)
+            selectionSortAnalysis_sorted(100, 2000, 500)
+            modes("2")
+            # print(math.floor(kforTaskOne[0]), kforTaskOne[1])
+        elif userTask == "4":
+            main()
+
+
+def main():
+
+
+    mode = input("   ____\n"
+                 " | MODES |\n"
+                 "  -------\n"
+     
+                 "Select 1 To Enter User Testing Mode: \n"
+                 "Select 2 To Enter Scatter Plot Mode:  \n"
+                 "Select q To Quit:  \n"
+                 )
+
+    modes(mode)
 
 
 
