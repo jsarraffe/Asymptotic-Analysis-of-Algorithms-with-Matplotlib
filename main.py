@@ -93,7 +93,7 @@ def displayKfor_GCD_FIB(k):
 
     fig0 = plt.figure()
     plt.plot(x, numOfModulos, "bo")
-    fig0.suptitle(" Euclid's algorithm with consecutive elements of the Fibnacci sequence as inputs", fontsize=12)
+    fig0.suptitle(" Euclid's algorithm with consecutive elements of the Fibonacci sequence", fontsize=12)
     plt.xlabel('k', fontsize=18)
     plt.ylabel('# of divisions', fontsize=16)
     plt.legend([" D(k) ∈ ϴ(log(k))"])
@@ -257,14 +257,14 @@ def selectionSortAnalysis_sorted(start, end, increment):
     plt.legend(["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n)"])
     plt.show()
 
-    figI = plt.figure()
+    fig10 = plt.figure()
     plt.plot(x, comparisonsInsertion, "ro")
-    figI.suptitle('A closer look at Insertion with Sorted Input', fontsize=15)
+    fig10.suptitle('A closer look at Insertion Sort with Sorted Input', fontsize=15)
     plt.xlabel('size of list as n', fontsize=18)
     plt.ylabel('# of comparisons', fontsize=16)
 
     plt.legend(
-        ["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n)"])
+        ["Insertion Sort: C(n) ∈ ϴ(n)"])
     plt.show()
 
 
@@ -379,13 +379,15 @@ def main():
         decByConst.clear()
         devAndConquer.clear()
         decByOneOperations.clear()
+        displayK_for_fib(20)
+        displayKfor_GCD_FIB(30)
+
         basicOperationExponent(400)
         showExp()
         selectionSortAnalysis_r(100, 4000, 500)
         selectionSortAnalysis_random(100, 4000, 500)
         selectionSortAnalysis_sorted(100, 4000, 500)
-        displayKfor_GCD_FIB(30)
-        displayK_for_fib(20)
+
         # print(math.floor(kforTaskOne[0]), kforTaskOne[1])
         main()
         print("\n")
