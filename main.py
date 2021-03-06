@@ -326,7 +326,7 @@ def modes(mode):
 
                          )
         if userTask == "1":
-            k = int(input("Ener a value for k, to see Fib(k) and GCD(k+1,k) =  "))
+            k = int(input("Ener a value for k, to see Fib(k) and GCD(Fib(k+1),Fib(k)) =  "))
             fibAlgo.reset();
             print("Fib(k) =  " + str(math.floor((fibAlgo.fibanacciFormula(k)))))
 
@@ -386,7 +386,7 @@ def modes(mode):
     elif mode == '2':
         userTask = input("______________________________________\n"
 
-                         "Select 1 Fibonacci Scatter Plot: \n"
+                         "Select 1 Fibonacci/Euclid's Scatter Plot: \n"
                          "Select 2 Exponential Scatter Plot:  \n"
                          "Select 3 Insertion and Selecion Sort Plot:  \n"
                          "Select 4 to Select Mode:  \n"
@@ -407,9 +407,9 @@ def modes(mode):
             showExp()
             modes("2")
         elif userTask == "3":
-            selectionSortAnalysis_r(100, 2000, 500)
-            selectionSortAnalysis_random(100, 2000, 500)
-            selectionSortAnalysis_sorted(100, 2000, 500)
+            selectionSortAnalysis_r(100, 6000, 500)
+            selectionSortAnalysis_random(100, 6000, 500)
+            selectionSortAnalysis_sorted(100, 6000, 500)
             modes("2")
             # print(math.floor(kforTaskOne[0]), kforTaskOne[1])
         elif userTask == "4":
