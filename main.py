@@ -93,10 +93,10 @@ def displayKfor_GCD_FIB(k):
 
     fig0 = plt.figure()
     plt.plot(x, numOfModulos, "bo")
-    fig0.suptitle('GCD with consecutive elements of the Fibnacci sequence as inputs.', fontsize=12)
+    fig0.suptitle(" Euclid's algorithm with consecutive elements of the Fibnacci sequence as inputs", fontsize=12)
     plt.xlabel('k', fontsize=18)
     plt.ylabel('# of divisions', fontsize=16)
-    plt.legend([" D(n) ∈ ϴ(logn)"])
+    plt.legend([" D(k) ∈ ϴ(log(k))"])
 
     plt.show()
 
@@ -110,7 +110,7 @@ def displayK_for_fib(k):
     basicOpOfRecursiveAlgo(k)
     fig = plt.figure()
     plt.plot(x, basicOperations, "bo")
-    fig.suptitle('Analysis of the Recursive Fibonacci Implementation', fontsize=15)
+    fig.suptitle('Recursive Fibonacci Implementation', fontsize=15)
     plt.xlabel('k', fontsize=18)
     plt.ylabel('# of additions', fontsize=16)
     plt.legend(["A(k) ∈ ϴ(" + "k" + "2".translate(superscript) + ")"])
@@ -123,12 +123,18 @@ def showExp():
     plt.plot(x, decByConst, "bo")
     plt.plot(x, decByOneOperations, "go")
     plt.plot(x, devAndConquer, "ro")
-    fig3.suptitle('Comparison of algorithms for exponentiation', fontsize=20)
+    fig3.suptitle('Comparison of algorithms for exponentiation', fontsize=16)
     plt.xlabel(" n ")
-    plt.ylabel('# of multiplications', fontsize=16)
-    plt.legend(["Dec-by-Const: M(n) ∈ ϴ(logn)", "Dec-by-one: M(n) ∈   ϴ(n)", "Divide-and-conquer: M(n) ∈  ϴ(n)"])
+    plt.ylabel('# of multiplications', fontsize=18)
+    plt.legend(["Decrease-by-constant: M(n) ∈ ϴ(log(n))", "Decrease-by-one: M(n) ∈   ϴ(n)", "Divide-and-conquer: M(n) ∈  ϴ(n)"])
 
     plt.show()
+    figx = plt.figure()
+    plt.plot(x, decByConst, "bo")
+    figx.suptitle('Decrease-By-Constant closer look', fontsize=16)
+    plt.xlabel(" n ")
+    plt.ylabel('# of multiplications', fontsize=18)
+    plt.legend(["Decease-by-Constant: M(n) ∈ ϴ(log(n))"])
 
 def readFile(fileName, array):
     inputsForSorting = []
@@ -197,10 +203,10 @@ def selectionSortAnalysis_r(start, end, increment):
     fig5 = plt.figure()
     plt.plot(x,comparisonsSelection, "bo")
     plt.plot(x,comparisonsInsertion, "ro")
-    fig5.suptitle('Reversed input Analysis for Sorting Algorithms', fontsize=15)
+    fig5.suptitle('Reversed input for Sorting Algorithms', fontsize=15)
     plt.xlabel('n', fontsize=18)
     plt.ylabel('# of comparisons', fontsize=16)
-    plt.legend(["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n)"])
+    plt.legend(["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")"])
 
     plt.show()
 
@@ -244,11 +250,21 @@ def selectionSortAnalysis_sorted(start, end, increment):
 
     plt.plot(x, comparisonsSelection, "bo")
     plt.plot(x, comparisonsInsertion, "ro")
-    fig6.suptitle('Sorted input Analysis for Sorting Algorithms', fontsize=15)
+    fig6.suptitle('Sorted input for Sorting Algorithms', fontsize=15)
     plt.xlabel('size of list as n', fontsize=18)
     plt.ylabel('# of comparisons', fontsize=16)
 
     plt.legend(["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n)"])
+    plt.show()
+
+    figI = plt.figure()
+    plt.plot(x, comparisonsInsertion, "ro")
+    figI.suptitle('A closer look at Insertion with Sorted Input', fontsize=15)
+    plt.xlabel('size of list as n', fontsize=18)
+    plt.ylabel('# of comparisons', fontsize=16)
+
+    plt.legend(
+        ["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n)"])
     plt.show()
 
 
@@ -289,7 +305,7 @@ def selectionSortAnalysis_random(start, end, increment):
     plt.plot(x, comparisonsSelection, "bo")
     plt.plot(x, comparisonsInsertion, "ro")
 
-    fig7.suptitle('Random input Analysis for Sorting Algorithms', fontsize=15)
+    fig7.suptitle('Random input for Sorting Algorithms', fontsize=15)
     plt.xlabel('size of list as n', fontsize=18)
     plt.ylabel('# of comparisons', fontsize=16)
     plt.legend(["Selection Sort: C(n) ∈ ϴ(" + "n" + "2".translate(superscript) + ")", "Insertion Sort: C(n) ∈ ϴ (" + "n" + "2".translate(superscript) + ")"])
@@ -365,9 +381,9 @@ def main():
         decByOneOperations.clear()
         basicOperationExponent(400)
         showExp()
-        selectionSortAnalysis_r(100, 2000, 500)
-        selectionSortAnalysis_random(100, 2000, 500)
-        selectionSortAnalysis_sorted(100, 2000, 500)
+        selectionSortAnalysis_r(100, 4000, 500)
+        selectionSortAnalysis_random(100, 4000, 500)
+        selectionSortAnalysis_sorted(100, 4000, 500)
         displayKfor_GCD_FIB(30)
         displayK_for_fib(20)
         # print(math.floor(kforTaskOne[0]), kforTaskOne[1])
